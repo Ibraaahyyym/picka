@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Picka Delivery</title>
+  <style>
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    header {
+      background-color: beige/*rgb(17 24 39 / var(--tw-bg-opacity, 1)); */  /*#f97316*/ /*#006d5b*/;
+      color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: black/*white*/;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Full-screen overlay menu */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));    /*#f97316*/ /*#006d5b*/;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      z-index: 999;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav.active {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    main {
+      /*margin-top: 40px;*/
+      font-weight: bold;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      background-color: /*rgb(17 24 39 / var(--tw-bg-opacity, 1)); */ /*#f97316*/ /*orangered*/;
+    }
+
+    footer {
+      background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));/*#004b3f*/;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+    }
+
+
+
+    /*Adding styling from TasFlow css below*/
+/* HERO SECTION */
+    #about {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    #about h1 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    #about p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      padding: 10px 18px;
+      margin: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn-primary {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid #000;
+      color: #000;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    /* FEATURES SECTION */
+    .container2 {
+      margin-top: 40px;
+      background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));  /*#E1AA36*/ /*#FED16A*/;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .container2 h1 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .container2 p {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .feature-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .feature {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 320px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .feature img {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    /*Adding styling TasFlow css above*/
+
+    footer{
+        margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Picka</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
+   <!-- adding my section from TaskFlow below-->
+  <section class="container2">
+    <h1>Food delivery and takeout near you</h1>
+    <p>Discover local, on-demand delivery or pickup from restaurants, nearby grocery and convenience stores, and more.</p>
+
+    <div class="feature-container">
+      <div class="feature"> 
+        <img src="tomato-seller.jpeg" alt=""/>
+        <!--<img src="https://images.unsplash.com/photos/a-group-of-people-standing-around-a-table-filled-with-tomatoes-cnVn4Gg4b00?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink" alt="local Nigeria market"/>-->
+        <h3>Mama shade -- Kakuri Market</h3>
+        <p>Fresher Tomatoes 🍅, Pepper 🌶️</p>
+      </div>
+
+      <div class="feature">
+        <!--<img src="https://unsplash.com/photo-1550547660-d9450f859349?w=800" alt="collaboration" />-->
+        <img src="./veggies-seller.jpeg" alt=""/>
+        <h3>Malam Husseini -- Kakuri Market</h3>
+        <p>Vegetables, Cabbage 🥬, Onions 🧅 </p>
+      </div>
+
+      <div class="feature">
+        <!-- <img src="https://unsplash.com/photos/a-man-standing-next-to-a-green-machine-xoevEGNeykc?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink" alt="iya joshua food seller" />-->
+        <img src="./kosai-seller.webp"/>
+        <h3>Iya Joshua</h3>
+        <p>Yam, Potatoes, Plantain</p>
+      </div>
+
+      <div class="feature">
+        <img src="./orange-seller.webp" alt="iya fatai - food seller" />
+        <h3>Iya Fatai</h3>
+        <p>Sweet Semo qnd Ogunfe, Amala and gbegeri, rice, beans, Shaki, Cow leg</p>
+      </div>
+    </div>
+  </section>
+   <!-- adding my section from TaskFlow above-->
+
+  <footer>
+    &copy; 2025 Picka Delivery. All rights reserved.
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    burger.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+      // Animate burger icon into an 'X'
+      burger.classList.toggle('open');
+    });
+
+    // Optional: Close menu when a link is clicked
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        burger.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
